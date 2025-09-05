@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 Celebration - Priyanka's Birthday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: radial-gradient(ellipse at center, #1a237e 0%, #0d1421 50%, #000051 100%);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+        }
+
+        /* Animated background stars */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Main content container */
+        .celebration-container {
+            text-align: center;
+            z-index: 10;
+            max-width: 900px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .day-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            color: #1a1a1a;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffd700, #ffb347, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .birthday-message {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #e8eaf6;
+            font-weight: 300;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .emoji-large {
+            font-size: 2.5rem;
+            margin: 0 10px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Enhanced lanterns */
+        .lantern {
+            position: absolute;
+            bottom: -120px;
+            width: 40px;
+            height: 60px;
+            border-radius: 15px;
+            animation: floatUp 12s linear infinite;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+            filter: blur(0.5px);
+        }
+
+        .lantern::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 8px;
+            background: rgba(139, 69, 19, 0.8);
+            border-radius: 4px;
+        }
+
+        .lantern::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background: rgba(139, 69, 19, 0.6);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.7) rotate(-5deg);
+                opacity: 0.7;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-130vh) scale(1.3) rotate(5deg);
+                opacity: 0;
+            }
+        }
+
+        /* Interactive celebration button */
+        .celebration-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            margin-top: 20px;
+        }
+
+        .celebration-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .celebration-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Firework effect */
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(20);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .celebration-container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            .birthday-message {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <div class="celebration-container">
+        <div class="day-badge">
+            🎉 Day 2 Lantern Celebration 🎉
+        </div>
+        
+        <h1 class="main-title">
+            Happy Birthday Priyanka✨ 
+            <span class="emoji-large">🎂</span>
+        </h1>
+        
+        <p class="birthday-message">
+            <span class="emoji-large">🏮</span>
+            Like lanterns rising in the night sky,<br>
+            may your dreams lift higher and glow brighter this year
+            <span class="emoji-large">✨</span>
+        </p>
+
+        <button class="celebration-btn" onclick="createFireworks()">
+            🎆 Create Magic 🎆
+        </button>
+    </div>
+
+    <audio id="birthdayMusic" src="class.mp3" preload="auto"></audio>
+
+    <script>
+        // Enhanced lantern colors with gradients
+        const lanternColors = [
+            "linear-gradient(135deg, #ff9a56, #ff6b35)",
+            "linear-gradient(135deg, #ffd93d, #ff9800)",
+            "linear-gradient(135deg, #74b9ff, #0984e3)",
+            "linear-gradient(135deg, #fd79a8, #e84393)",
+            "linear-gradient(135deg, #00b894, #00a085)",
+            "linear-gradient(135deg, #fdcb6e, #e17055)",
+            "linear-gradient(135deg, #a29bfe, #6c5ce7)"
+        ];
+
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (2 + Math.random() * 3) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Enhanced lantern creation
+        function createLantern() {
+            const lantern = document.createElement('div');
+            lantern.classList.add('lantern');
+            lantern.style.left = Math.random() * (window.innerWidth - 40) + 'px';
+            lantern.style.background = lanternColors[Math.floor(Math.random() * lanternColors.length)];
+            lantern.style.animationDuration = (8 + Math.random() * 6) + 's';
+            lantern.style.animationDelay = Math.random() * 2 + 's';
+            
+            // Add slight horizontal drift
+            const drift = (Math.random() - 0.5) * 100;
+            lantern.style.setProperty('--drift', drift + 'px');
+            
+            document.body.appendChild(lantern);
+            setTimeout(() => lantern.remove(), 15000);
+        }
+
+        // Fireworks and music effect
+        function createFireworks() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    firework.style.left = Math.random() * window.innerWidth + 'px';
+                    firework.style.top = Math.random() * window.innerHeight + 'px';
+                    firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    firework.style.animation = 'explode 1s ease-out forwards';
+                    
+                    document.body.appendChild(firework);
+                    setTimeout(() => firework.remove(), 1000);
+                }, i * 100);
+            }
+
+            // Play the birthday music when the fireworks start
+            const music = document.getElementById('birthdayMusic');
+            if (music) {
+                music.play().catch(e => console.error("Audio playback failed:", e));
+            }
+        }
+
+        // Initialize
+        createStars();
+        
+        // Create lanterns at intervals
+        setInterval(createLantern, 800);
+        
+        // Create initial lanterns
+        for (let i = 0; i < 3; i++) {
+            setTimeout(createLantern, i * 300);
+        }
+
+        // Add keyboard interaction
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                createFireworks();
+            }
+        });
+    </script>
+</body>
+</html>
