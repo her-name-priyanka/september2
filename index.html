@@ -25,7 +25,6 @@
             position: relative;
         }
 
-        /* Animated background stars */
         .stars {
             position: absolute;
             top: 0;
@@ -49,7 +48,6 @@
             50% { opacity: 1; transform: scale(1.2); }
         }
 
-        /* Main content container */
         .celebration-container {
             text-align: center;
             z-index: 10;
@@ -127,7 +125,6 @@
             60% { transform: translateY(-5px); }
         }
 
-        /* Enhanced lanterns */
         .lantern {
             position: absolute;
             bottom: -120px;
@@ -175,7 +172,6 @@
             }
         }
 
-        /* Interactive celebration button */
         .celebration-btn {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             border: none;
@@ -199,7 +195,6 @@
             transform: translateY(-1px);
         }
 
-        /* Firework effect */
         .firework {
             position: absolute;
             width: 4px;
@@ -219,7 +214,6 @@
             }
         }
 
-        /* Responsive design */
         @media (max-width: 768px) {
             .celebration-container {
                 margin: 20px;
@@ -260,7 +254,6 @@
     <audio id="birthdayMusic" src="class.mp3" preload="auto"></audio>
 
     <script>
-        // Enhanced lantern colors with gradients
         const lanternColors = [
             "linear-gradient(135deg, #ff9a56, #ff6b35)",
             "linear-gradient(135deg, #ffd93d, #ff9800)",
@@ -271,7 +264,6 @@
             "linear-gradient(135deg, #a29bfe, #6c5ce7)"
         ];
 
-        // Create animated stars
         function createStars() {
             const starsContainer = document.getElementById('stars');
             for (let i = 0; i < 100; i++) {
@@ -285,7 +277,6 @@
             }
         }
 
-        // Enhanced lantern creation
         function createLantern() {
             const lantern = document.createElement('div');
             lantern.classList.add('lantern');
@@ -293,8 +284,7 @@
             lantern.style.background = lanternColors[Math.floor(Math.random() * lanternColors.length)];
             lantern.style.animationDuration = (8 + Math.random() * 6) + 's';
             lantern.style.animationDelay = Math.random() * 2 + 's';
-            
-            // Add slight horizontal drift
+
             const drift = (Math.random() - 0.5) * 100;
             lantern.style.setProperty('--drift', drift + 'px');
             
@@ -302,7 +292,6 @@
             setTimeout(() => lantern.remove(), 15000);
         }
 
-        // Fireworks and music effect
         function createFireworks() {
             const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3'];
             
@@ -320,25 +309,20 @@
                 }, i * 100);
             }
 
-            // Play the birthday music when the fireworks start
             const music = document.getElementById('birthdayMusic');
             if (music) {
                 music.play().catch(e => console.error("Audio playback failed:", e));
             }
         }
 
-        // Initialize
         createStars();
-        
-        // Create lanterns at intervals
+
         setInterval(createLantern, 800);
-        
-        // Create initial lanterns
+
         for (let i = 0; i < 3; i++) {
             setTimeout(createLantern, i * 300);
         }
 
-        // Add keyboard interaction
         document.addEventListener('keydown', (e) => {
             if (e.code === 'Space') {
                 e.preventDefault();
@@ -347,4 +331,5 @@
         });
     </script>
 </body>
+
 </html>
